@@ -8,10 +8,10 @@
     directive.$inject = [
         'Cropper',
         'defaultConfig',
-        'Helper'
+        'HelperFactoryFactory'
     ];
 
-    function directive(Cropper, defaultConfig, Helper) {
+    function directive(Cropper, defaultConfig, HelperFactoryFactory) {
         return {
             'restrict': 'E',
             'scope': {
@@ -110,12 +110,12 @@
 
             // events
             var start = function(e) {
-                if(!(gEnabled && Helper.validEvent(e))) {
+                if(!(gEnabled && HelperFactory.validEvent(e))) {
                     return;
                 }
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                pointerPosition = Helper.getPointerPosition(e);
+                pointerPosition = HelperFactory.getPointerPosition(e);
                 return bind();
             };
 
@@ -168,7 +168,7 @@
                 var dx, dy, left, p, top;
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                p = Helper.getPointerPosition(e);
+                p = HelperFactory.getPointerPosition(e);
                 dx = p.x - pointerPosition.x;
                 dy = p.y - pointerPosition.y;
                 pointerPosition = p;
@@ -231,7 +231,7 @@
             var rotate = function(angle) {
                 var canvasRatio, h, w, _ref, _ref1, _ref2;
 
-                if(!Helper.canTransform()) {
+                if(!HelperFactory.canTransform()) {
                     return;
                 }
 
