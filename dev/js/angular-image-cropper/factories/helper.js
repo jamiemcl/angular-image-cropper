@@ -3,7 +3,7 @@
 
     angular
         .module('imageCropper')
-        .factory('HelperFactory', factory);
+        .factory('HelperFactoryFactory', factory);
 
     factory.$inject = [
         'defaultConfig'
@@ -51,7 +51,7 @@
         function canTransform() {
             if(hasTransform !== null) { return hasTransform; }
 
-            var helper, prefix, prefixes, prop, test, tests, value, _i, _len;
+            var HelperFactory, prefix, prefixes, prop, test, tests, value, _i, _len;
 
             prefixes = ['webkit', 'Moz', 'O', 'ms', 'Khtml'];
             tests = {
@@ -63,17 +63,17 @@
                 tests[prefix + 'Transform'] = '-' + prefix.toLowerCase() + '-transform';
             }
 
-            helper = document.createElement('img');
-            document.body.insertBefore(helper, null);
+            HelperFactory = document.createElement('img');
+            document.body.insertBefore(HelperFactory, null);
             for (test in tests) {
                 prop = tests[test];
 
-                if (helper.style[test] === void 0) {
+                if (HelperFactory.style[test] === void 0) {
                     continue;
                 }
 
-                helper.style[test] = 'rotate(90deg)';
-                value = window.getComputedStyle(helper).getPropertyValue(prop);
+                HelperFactory.style[test] = 'rotate(90deg)';
+                value = window.getComputedStyle(HelperFactory).getPropertyValue(prop);
 
                 if ((value !== null) && value.length && value !== 'none') {
                     hasTransform = true;
@@ -81,7 +81,7 @@
                 }
             }
 
-            document.body.removeChild(helper);
+            document.body.removeChild(HelperFactory);
 
             return hasTransform;
         }
