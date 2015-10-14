@@ -6,11 +6,11 @@
         .factory('Cropper', factory);
 
     factory.$inject = [
-        'HelperFactory',
+        'HelperFactoryFactory',
         '$q'
     ];
 
-    function factory(HelperFactory, $q) {
+    function factory(HelperFactoryFactory, $q) {
         var canvas,
             context,
             image,
