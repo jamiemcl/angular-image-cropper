@@ -3,7 +3,7 @@
 
     angular
         .module('imageCropper')
-        .factory('Helper', factory);
+        .factory('HelperFactory', factory);
 
     factory.$inject = [
         'defaultConfig'
