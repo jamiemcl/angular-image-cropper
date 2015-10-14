@@ -8,10 +8,10 @@
     directive.$inject = [
         'Cropper',
         'defaultConfig',
-        'HelperFactoryFactory'
+        'HelperFactory'
     ];
 
-    function directive(Cropper, defaultConfig, HelperFactoryFactory) {
+    function directive(Cropper, defaultConfig, HelperFactory) {
         return {
             'restrict': 'E',
             'scope': {
